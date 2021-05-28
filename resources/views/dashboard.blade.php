@@ -37,6 +37,12 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+<style>
+    .anyClass {
+  height:150px;
+  overflow-y: scroll;
+}
+</style>
 </head>
 
 <body>
@@ -74,6 +80,7 @@
                   <hr>
                 <h3 class ="mt-4">Hasil</h3>
                   <hr>
+                  <div class="overflow-auto anyClass">
 {{-- {{ dd($datas) }} --}}
                   @foreach ($datas as $data)
 
@@ -86,7 +93,7 @@
 
                   <hr>
 
-                  @endforeach
+                  @endforeach <div>
 
               </div>
             </div>

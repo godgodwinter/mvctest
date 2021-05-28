@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\quotes;
+use Illuminate\Contracts\Session\Session as SessionSession;
+use Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\DB;
@@ -12,6 +14,9 @@ class homeController extends Controller
 
     public function index()
     {
+        Session::forget('tampiltxt');
+        Session::put('tampiltxt', []);
+
 
          //buat array arr
          $arr=array();
@@ -40,7 +45,7 @@ class homeController extends Controller
 
         $datas=$arr;
 
-        // $datas=array();
+        $datas=array();
         return view('dashboard',compact('datas'));
     }
 
@@ -57,7 +62,6 @@ class homeController extends Controller
         //buat array arr
         $arr=array();
 
-        // $url=URL::to('/')."/download/quotes.txt";
         $namefile="download/1.txt";
 
         //open file txt
@@ -80,16 +84,21 @@ class homeController extends Controller
                 array_push($arr,$arr_temp);
             }
 //cari nilai acak
-            $random=rand(0,$i);
+            $random=rand(0,$i-1);
 
-    // $tampil=$arr[$random];
+    $tampil=$arr[$random];
 
 array_push($datas,$arr[$random]);
+
+session()->put('tampiltxt', []);
+Session::push('tampiltxt', [$tampil]);
+// dd(Session::get('tampiltxt'));
             // dd($tampil);
 
     //    $datas=$tampil;
 
        // $datas=array();
+       return view('dashboard',compact('datas'));
        return view('dashboard',compact('datas'));
     }
 
