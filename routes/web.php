@@ -20,4 +20,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'App\Http\Controllers\homeController@index');
 Route::delete('reset', 'App\Http\Controllers\homeController@reset');
-Route::resource('dashboard','App\Http\Controllers\homeController');
+Route::get('/show', 'App\Http\Controllers\homeController@show');

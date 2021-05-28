@@ -60,38 +60,28 @@
             <div class="col-lg-8 mt-8 mt-lg-0" >
               <div class="box featured">
 
-                <a href="{{ asset("download/quotes.txt") }}" class="btn btn btn-warning mt-2 btn-sm">Contoh quotes.txt</a><form action="/reset" method="post" class="d-inline">
+                <a href="{{ asset("download/quotes.txt") }}" class="btn btn btn-warning mt-2 btn-sm">Lihat quotes.txt</a><form action="/reset" method="post" class="d-inline">
                     @method('delete')
                     @csrf
-                    <button class="btn btn btn-danger mt-2 btn-sm"
-                        onclick="return  confirm('Anda yakin mereset data ini? Y/N')"><span
+                    <button class="btn btn btn-danger mt-2 btn-sm"><span
                             class="pcoded-micon"> <i class="feather icon-delete"></i> RESET </span></button>
                 </form>
-                <p  for="input1" class="mt-2">Masukkan file quotes.txt</p>
 
-                <form action="/dashboard" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group">
-                      <input type="file" class="form-control  @error('file') is-invalid @enderror" id="input1" name="file">
 
-                      @error('file')<div class="invalid-feedback"> {{$message}}</div>
-                      @enderror
-
-                    </div>
-
-                    <button type="submit" class="buy-btn btn btn-primary mt-2">Submit</button>
-                  </form>
-
-                <h3 class ="mt-4">Hasil</h3>
                   <hr>
 
+                  <a href="show" class="buy-btn btn btn-primary mt-2">Show</a>
+                  <hr>
+                <h3 class ="mt-4">Hasil</h3>
+                  <hr>
+{{-- {{ dd($datas) }} --}}
                   @foreach ($datas as $data)
 
                 <h5 class ="mt-3">Peribahasa Hari ini</h5>
 
-                  <p> {{ $data->isi }}</p>
+                  <p> {{ $data }}</p>
                   <i>
-                  <p class ="mt-3">Posted {{ $data->created_at }}</p>
+                  <p class ="mt-3">Posted {{ date('D F d-m-Y') }}</p>
                   </i>
 
                   <hr>
