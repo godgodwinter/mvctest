@@ -39,7 +39,7 @@
   ======================================================== -->
 <style>
     .anyClass {
-  height:150px;
+  height:350px;
   overflow-y: scroll;
 }
 </style>
@@ -76,7 +76,7 @@
 
                   <hr>
 
-                  <a href="show" class="buy-btn btn btn-primary mt-2">Show</a>
+                  <a href="{{ asset("/") }}show/{{ $id+1 }}" class="buy-btn btn btn-primary mt-2">Show</a>
                   <hr>
                 <h3 class ="mt-4">Hasil</h3>
                   <hr>

@@ -46,7 +46,8 @@ class homeController extends Controller
         $datas=$arr;
 
         $datas=array();
-        return view('dashboard',compact('datas'));
+        $id=0;
+        return view('dashboard',compact('datas','id'));
     }
 
     public function reset()
@@ -55,8 +56,9 @@ class homeController extends Controller
 
     }
 
-    public function show()
+    public function show($id=1)
     {
+        // dd($id);
         $datas=array();
         $i=0;
         //buat array arr
@@ -83,23 +85,35 @@ class homeController extends Controller
                 //masukkan ke dalam array
                 array_push($arr,$arr_temp);
             }
-//cari nilai acak
-            $random=rand(0,$i-1);
+
+for($a=1;$a<=$id;$a++){
+    $random=rand(0,$i-1);
 
     $tampil=$arr[$random];
 
-array_push($datas,$arr[$random]);
+    array_push($datas,$arr[$random]);
+// if(($key=array_search($arr[$random],$datas))==false){
 
-session()->put('tampiltxt', []);
-Session::push('tampiltxt', [$tampil]);
+//     array_push($datas,$arr[$random]);
+
+// }
+
+}
+//cari nilai acak
+
+
+// session()->put('tampiltxt', []);
+// Session::push('tampiltxt', [$tampil]);
 // dd(Session::get('tampiltxt'));
             // dd($tampil);
 
     //    $datas=$tampil;
 
-       // $datas=array();
-       return view('dashboard',compact('datas'));
-       return view('dashboard',compact('datas'));
+    //    $datas=array();
+    if($id==$i+1){
+        $id--;
+    }
+       return view('dashboard',compact('datas','id'));
     }
 
 }
