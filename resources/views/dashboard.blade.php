@@ -49,7 +49,6 @@
 
           <div class="section-title">
             <h2>TEST MVC PHP</h2>
-            <p>Masukkan file quotes.txt</p>
           </div>
 
           <div class="row">
@@ -60,9 +59,45 @@
 
             <div class="col-lg-8 mt-8 mt-lg-0" >
               <div class="box featured">
-                <h3>Hasil</h3>
 
-                <a href="#team" class="buy-btn">Get Started</a>
+                <a href="{{ asset("download/quotes.txt") }}" class="btn btn btn-warning mt-2 btn-sm">Contoh quotes.txt</a><form action="/reset" method="post" class="d-inline">
+                    @method('delete')
+                    @csrf
+                    <button class="btn btn btn-danger mt-2 btn-sm"
+                        onclick="return  confirm('Anda yakin mereset data ini? Y/N')"><span
+                            class="pcoded-micon"> <i class="feather icon-delete"></i> RESET </span></button>
+                </form>
+                <p  for="input1" class="mt-2">Masukkan file quotes.txt</p>
+
+                <form action="/dashboard" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group">
+                      <input type="file" class="form-control  @error('file') is-invalid @enderror" id="input1" name="file">
+
+                      @error('file')<div class="invalid-feedback"> {{$message}}</div>
+                      @enderror
+
+                    </div>
+
+                    <button type="submit" class="buy-btn btn btn-primary mt-2">Submit</button>
+                  </form>
+
+                <h3 class ="mt-4">Hasil</h3>
+                  <hr>
+
+                  @foreach ($datas as $data)
+
+                <h5 class ="mt-3">Peribahasa Hari ini</h5>
+
+                  <p> {{ $data->isi }}</p>
+                  <i>
+                  <p class ="mt-3">Posted {{ $data->created_at }}</p>
+                  </i>
+
+                  <hr>
+
+                  @endforeach
+
               </div>
             </div>
 
