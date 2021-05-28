@@ -84,7 +84,7 @@
 {{-- {{ dd($datas) }} --}}
                   @foreach ($datas as $data)
 
-                <h5 class ="mt-3">Peribahasa Hari ini</h5>
+                <h5 class ="mt-3">Peribahasa Hari ini :</h5>
 
                   <p> {{ $data }}</p>
                   <i>
